@@ -1,0 +1,89 @@
+# ===========================
+# 🔐 安全与私密 (最重要)
+# ===========================
+# 忽略环境变量文件 (防止 API Key 泄露)
+.env
+.env.*
+!.env.example
+*.pem
+
+# 忽略 SQLite 数据库文件 (防止提交用户数据)
+*.db
+*.sqlite
+*.sqlite3
+backend/data.db
+
+# ===========================
+# 🐍 Python (Backend)
+# ===========================
+# 字节码编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+venv/
+.venv/
+env/
+ENV/
+
+# PyInstaller 打包产物 (Python 打包时生成)
+*.spec
+build/
+dist/
+
+# Pytest 测试缓存
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 日志
+*.log
+
+# ===========================
+# ⚛️ Node.js / React / Electron
+# ===========================
+# 依赖包 (体积巨大，绝对不能提交)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 构建输出 (Web 端构建)
+/apps/web/dist/
+/apps/web/build/
+/apps/desktop/dist/
+
+# Electron 构建产物
+/out/
+/dist_electron/
+*.dmg
+*.exe
+*.app
+*.zip
+
+# ===========================
+# 💻 IDE & 系统文件
+# ===========================
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json # 如果你想共享统一的格式化配置，可以把这行去掉
+
+# JetBrains (PyCharm / WebStorm)
+.idea/
+
+# ===========================
+# 📂 Monorepo 特有
+# ===========================
+# 临时文件
+tmp/
+temp/
