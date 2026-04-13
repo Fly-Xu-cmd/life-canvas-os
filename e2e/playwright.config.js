@@ -2,18 +2,18 @@
  * Playwright E2E 测试配置
  * 适用：Electron + React + FastAPI 全栈应用
  */
-import { defineConfig, devices } from '@playwright/test'
+const { defineConfig, devices } = require('@playwright/test');
 
-export default defineConfig({
+module.exports = defineConfig({
   // 测试目录
   testDir: './e2e/tests',
-  
-  // 失败时重试次数（CI 环境不稳定，适当重试）
+
+  // 失败时重试次数
   retries: process.env.CI ? 2 : 0,
-  
-  // 并行workers（CI 环境少一些）
+
+  // 并行workers
   workers: process.env.CI ? 2 : undefined,
-  
+
   // 报告器
   reporter: [
     ['html', { outputFolder: 'e2e/reports' }],
@@ -28,19 +28,10 @@ export default defineConfig({
 
   // 共享设置
   use: {
-    // 截图（仅失败时）
     screenshot: 'only-on-failure',
-    
-    // 视频（仅失败时）
     video: 'retain-on-failure',
-    
-    // 跟踪（仅失败时）
     trace: 'on-first-retry',
-    
-    // 忽略 HTTPS 错误（开发环境）
     ignoreHTTPSErrors: true,
-    
-    // 导航超时
     navigationTimeout: 15_000,
   },
 
@@ -51,14 +42,11 @@ export default defineConfig({
       name: 'electron',
       use: {
         ...devices['Desktop Chrome'],
-        // Electron 应用 URL
         baseURL: 'http://localhost:5173',
-        // 截图时标注
         contextOptions: {
           viewport: { width: 1280, height: 800 },
         },
       },
-      // 依赖服务启动
       webServer: [
         {
           command: 'cd backend && python -m uvicorn main:app --port 3000',
@@ -124,4 +112,4 @@ export default defineConfig({
       testMatch: /.*\.mobile\.spec\.ts/,
     },
   ],
-})
+});
