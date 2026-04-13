@@ -110,7 +110,7 @@ class GetSystemScoresSkill(BaseSkill):
 
         return SkillResult(
             success=True,
-            message=f"当前评分：{', '.join([f'{d['name']}: {d['score']}分' for d in data[:3]])}...",
+            message=f"当前评分：{', '.join([f\"{d['name']}: {d['score']}分\" for d in data[:3]])}...",
             data=data,
             risk_level=self.risk_level
         )
