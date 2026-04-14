@@ -31,7 +31,7 @@ jobs:
       - name: 运行后端测试
         run: |
           cd backend
-          python -m pytest tests/ -v --tb=short --cov=. --cov-report=xml
+          python -m pytest tests/ -v --tb=short --cov=backend --cov-report=xml --cov-report=term-missing
         continue-on-error: true
 
       - name: 上传 pytest XML 报告
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pytest-report
-          path: backend/*.xml
+          path: backend/coverage.xml
           retention-days: 14
 
       - name: 上传测试日志
