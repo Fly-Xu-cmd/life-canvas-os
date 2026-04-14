@@ -108,9 +108,13 @@ class GetSystemScoresSkill(BaseSkill):
         # 按分数排序
         data.sort(key=lambda x: x.get("score", 0), reverse=True)
 
+        # 格式化前3条评分
+        top_scores = [f"{d['name']}: {d['score']}分" for d in data[:3]]
+        message = "当前评分：" + ", ".join(top_scores) + "..."
+
         return SkillResult(
             success=True,
-            message=f"当前评分：{', '.join([f\"{d['name']}: {d['score']}分\" for d in data[:3]])}...",
+            message=message,
             data=data,
             risk_level=self.risk_level
         )
