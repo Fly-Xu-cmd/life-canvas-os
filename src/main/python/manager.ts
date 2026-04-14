@@ -136,7 +136,7 @@ export class PythonManager {
       const isWindows = process.platform === 'win32'
       const pythonBinDir = isWindows ? 'Scripts' : 'bin'
       const pythonExe = isWindows ? 'python.exe' : 'python3'
-      pythonPath = path.join(projectRoot, 'venv', pythonBinDir, pythonExe)
+      pythonPath = path.join(projectRoot, '.venv', pythonBinDir, pythonExe)
       const mainPyPath = path.join(projectRoot, 'backend', 'main.py')
       args = [mainPyPath, '--dev', '--data-dir', dataDir]
 
