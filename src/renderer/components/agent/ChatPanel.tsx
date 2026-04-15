@@ -445,7 +445,11 @@ export function ChatPanel({ className }: ChatPanelProps) {
       setStreamingContent('')
 
       try {
-        const response = await sendMessage(trimmedInput, effectiveSessionId, true)
+        const response = await sendMessage(
+          trimmedInput,
+          effectiveSessionId,
+          true
+        )
 
         if (response instanceof ReadableStream) {
           const reader = response.getReader()
@@ -980,7 +984,7 @@ export function ChatPanel({ className }: ChatPanelProps) {
               <Button
                 className="h-12 px-6 rounded-xl bg-[#007aff] hover:bg-[#0070e0] text-white font-medium"
                 disabled={!input.trim()}
-                onClick={handleSend}
+                onClick={() => handleSend()}
               >
                 <Send className="h-4 w-4" />
               </Button>

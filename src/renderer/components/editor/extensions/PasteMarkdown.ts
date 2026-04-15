@@ -40,7 +40,9 @@ export const PasteMarkdown = Extension.create({
               event.preventDefault()
 
               // 使用 tiptap-markdown 的 parse 方法解析为 HTML
-              const html = editor.storage.markdown.parser.parse(text) as string
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const markdownStorage = (editor.storage as any).markdown
+              const html = markdownStorage?.parser?.parse(text) as string
 
               // 创建临时 DOM 元素解析 HTML
               const element = document.createElement('div')

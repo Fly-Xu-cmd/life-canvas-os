@@ -207,7 +207,8 @@ export function SettingsPage() {
 
       // 数据管理 - 加载当前数据目录
       if (activeTab === 'data') {
-        setCurrentDataDir(getCurrentDataDir())
+        const dir = await getCurrentDataDir()
+        setCurrentDataDir(dir)
       }
     }
 

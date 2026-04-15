@@ -31,7 +31,9 @@ export interface MigrationResult {
  * @param newDataDir 新数据目录路径
  * @returns 迁移结果
  */
-export async function migrateData(newDataDir: string): Promise<MigrationResult> {
+export async function migrateData(
+  newDataDir: string
+): Promise<MigrationResult> {
   // 获取旧数据目录
   const oldDataDir = await api.migrate.getDataDir()
 
@@ -76,7 +78,9 @@ export async function migrateData(newDataDir: string): Promise<MigrationResult> 
     }
   } catch (error) {
     console.error('[DataMigration] Migration failed:', error)
-    toast.error(`迁移失败: ${error instanceof Error ? error.message : '未知错误'}`)
+    toast.error(
+      `迁移失败: ${error instanceof Error ? error.message : '未知错误'}`
+    )
 
     return {
       success: false,
