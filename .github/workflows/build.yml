@@ -99,7 +99,9 @@ jobs:
         run: pnpm playwright:install --with-deps chromium
 
       - name: 运行 Playwright E2E 测试（API 模式）
-        run: pnpm test:api
+        run: |
+          cd e2e
+          npx playwright test --project=api
         continue-on-error: true
         env:
           CI: true
